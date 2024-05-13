@@ -11,6 +11,9 @@ groupadd -g 1000 lucas
 useradd -u 1000 -g lucas -d /home/lucas -ms /bin/bash -k /etc/skel lucas
 usermod -aG sudo lucas
 echo 'lucas ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
+EOF
+
+RUN <<EOF
 mkdir /home/lucas/.ssh
 chmod 700 /home/lucas/.ssh
 chown -R lucas:lucas /home/lucas/.ssh
