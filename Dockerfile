@@ -2,7 +2,7 @@ FROM mcr.microsoft.com/vscode/devcontainers/go:latest
 
 RUN <<EOF
 apt-get update
-apt-get install -y openssh-server vim docker.io docker-compose pacman-package-manager
+apt-get install -y openssh-server vim podman
 apt-get clean
 useradd -ms /bin/bash  lucas
 usermod -aG sudo lucas
@@ -14,14 +14,8 @@ WORKDIR /home/lucas
 
 RUN curl -LO https://dl.k8s.io/release/v1.30.0/bin/linux/amd64/kubectl
 RUN curl -sS https://webinstall.dev/k9s | bash
+# RUN wget https://downloads.nestybox.com/sysbox/releases/v0.6.4/sysbox-ce_0.6.4-0.linux_amd64.deb
 
 ENV GOPATH=/home/lucas/git/go
-
-CMD /usr/local/bin/code --install-extension ms-azuretools.vscode-docker
-CMD /usr/local/bin/code --install-extension redhat.ansible
-CMD /usr/local/bin/code --install-extension redhat.vscode-yaml
-CMD /usr/local/bin/code --install-extension ms-python.python
-CMD /usr/local/bin/code --install-extension ms-kubernetes-tools.vscode-kubernetes-tools
-CMD /usr/local/bin/code --install-extension HashiCorp.terraform
 
 ENTRYPOINT ["sudo", "/usr/sbin/sshd", "-D"]
