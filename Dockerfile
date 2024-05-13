@@ -2,7 +2,7 @@ FROM mcr.microsoft.com/vscode/devcontainers/go:latest
 
 RUN <<EOF
 apt-get update
-apt-get install -y openssh-server vim docker.io docker-compose pacman
+apt-get install -y openssh-server vim docker.io docker-compose pacman-package-manager
 apt-get clean
 useradd -ms /bin/bash  lucas
 usermod -aG sudo lucas
