@@ -17,13 +17,12 @@ WORKDIR /home/lucas
 
 ENV GOPATH=/home/lucas/git/go
 
-RUN <<EOF
-code --install-extension ms-azuretools.vscode-docker
-code --install-extension redhat.ansible
-code --install-extension redhat.vscode-yaml
-code --install-extension ms-python.python
-code --install-extension ms-kubernetes-tools.vscode-kubernetes-tools
-code --install-extension HashiCorp.terraform
-EOF
+RUN /usr/local/bin/code --install-extension ms-azuretools.vscode-docker
+RUN /usr/local/bin/code --install-extension redhat.ansible
+RUN /usr/local/bin/code --install-extension redhat.vscode-yaml
+RUN /usr/local/bin/code --install-extension ms-python.python
+RUN /usr/local/bin/code --install-extension ms-kubernetes-tools.vscode-kubernetes-tools
+RUN /usr/local/bin/code --install-extension HashiCorp.terraform
+
 
 ENTRYPOINT ["/usr/sbin/sshd", "-D"]
