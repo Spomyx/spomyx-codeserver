@@ -10,7 +10,7 @@ echo 'lucas ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 EOF
 
 RUN curl -LO https://dl.k8s.io/release/v1.30.0/bin/linux/amd64/kubectl
-RUN pacman -S k9s
+RUN curl -sS https://webinstall.dev/k9s | bash
 
 USER lucas
 WORKDIR /home/lucas
