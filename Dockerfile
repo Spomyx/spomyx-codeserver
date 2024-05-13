@@ -9,11 +9,11 @@ usermod -aG sudo lucas
 echo 'lucas ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 EOF
 
-RUN curl -LO https://dl.k8s.io/release/v1.30.0/bin/linux/amd64/kubectl
-RUN curl -sS https://webinstall.dev/k9s | bash
-
 USER lucas
 WORKDIR /home/lucas
+
+RUN curl -LO https://dl.k8s.io/release/v1.30.0/bin/linux/amd64/kubectl
+RUN curl -sS https://webinstall.dev/k9s | bash
 
 ENV GOPATH=/home/lucas/git/go
 
@@ -24,5 +24,4 @@ CMD /usr/local/bin/code --install-extension ms-python.python
 CMD /usr/local/bin/code --install-extension ms-kubernetes-tools.vscode-kubernetes-tools
 CMD /usr/local/bin/code --install-extension HashiCorp.terraform
 
-
-ENTRYPOINT ["/usr/sbin/sshd", "-D"]
+ENTRYPOINT ["sudo", "/usr/sbin/sshd", "-D"]
