@@ -2,7 +2,7 @@ FROM mcr.microsoft.com/vscode/devcontainers/go:latest
 
 RUN <<EOF
 apt-get update
-apt-get install -y openssh-server vim podman netcat
+apt-get install -y openssh-server vim podman netcat-openbsd
 apt-get clean
 EOF
 
