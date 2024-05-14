@@ -19,15 +19,18 @@ EOF
 RUN mkdir /var/run/sshd
 
 USER lucas
-WORKDIR /home/lucas
-
-RUN curl -LO https://dl.k8s.io/release/v1.30.0/bin/linux/amd64/kubectl
+RUN mkdir /etc/k9s
+WORKDIR /etc/k9s
 RUN curl -sS https://webinstall.dev/k9s | bash
+RUN mkdir /etc/kubectl
+WORKDIR /etc/kubectl
+RUN curl -LO https://dl.k8s.io/release/v1.30.0/bin/linux/amd64/kubectl
+
 
 RUN chmod 700 kubectl
 RUN mv kubectl .local/bin/.
 # RUN wget https://downloads.nestybox.com/sysbox/releases/v0.6.4/sysbox-ce_0.6.4-0.linux_amd64.deb
 
-ENV GOPATH=/home/lucas/git/go
+ENV GOPATH=/home/lucas/go
 
 ENTRYPOINT ["sudo", "/usr/sbin/sshd", "-D", "-e"]
