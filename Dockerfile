@@ -13,6 +13,7 @@ usermod -aG sudo lucas
 echo 'lucas ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 mkdir /home/lucas/.ssh
 chmod 700 /home/lucas/.ssh
+chmod 754 /home/lucas
 chown -R lucas:lucas /home/lucas/.ssh
 EOF
 
@@ -21,7 +22,7 @@ RUN mkdir /var/run/sshd
 WORKDIR /tmp/
 RUN wget https://github.com/derailed/k9s/releases/download/v0.32.4/k9s_linux_amd64.deb
 RUN dpkg -i k9s_linux_amd64.deb
-RUN curl -LO https://dl.k8s.io/release/v1.30.0/bin/linux/amd64/kubectl
+RUN curl -LO https://dl.k8s.io/release/v1.30.1/bin/linux/amd64/kubectl
 RUN install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 
 
