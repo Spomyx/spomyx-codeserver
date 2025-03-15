@@ -20,9 +20,9 @@ EOF
 RUN mkdir /var/run/sshd
 
 WORKDIR /tmp/
-RUN wget https://github.com/derailed/k9s/releases/download/v0.40.7/k9s_linux_amd64.deb
+RUN wget https://github.com/derailed/k9s/releases/download/v0.40.8/k9s_linux_amd64.deb
 RUN dpkg -i k9s_linux_amd64.deb
-RUN curl -LO https://dl.k8s.io/release/v1.31.4/bin/linux/amd64/kubectl
+RUN curl -LO https://dl.k8s.io/release/v1.32.7/bin/linux/amd64/kubectl
 RUN install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 
 USER lucas
