@@ -34,4 +34,8 @@ WORKDIR /home/lucas
 
 ENV GOPATH=/home/lucas/go
 
+RUN go install -a github.com/jsonnet-bundler/jsonnet-bundler/cmd/jb@latest
+RUN go install github.com/brancz/gojsontoyaml@latest
+RUN go install github.com/google/go-jsonnet/cmd/jsonnet@latest
+
 ENTRYPOINT ["sudo", "/usr/sbin/sshd", "-D", "-e"]
