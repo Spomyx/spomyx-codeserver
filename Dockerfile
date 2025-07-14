@@ -20,10 +20,14 @@ EOF
 RUN mkdir /var/run/sshd
 
 WORKDIR /tmp/
-RUN wget https://github.com/derailed/k9s/releases/download/v0.50.6/k9s_linux_amd64.deb
+RUN wget https://github.com/derailed/k9s/releases/download/v0.50.7/k9s_linux_amd64.deb
 RUN dpkg -i k9s_linux_amd64.deb
 RUN curl -LO https://dl.k8s.io/release/v1.33.1/bin/linux/amd64/kubectl
 RUN install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+
+RUN curl -fsSL -o cmctl https://github.com/cert-manager/cmctl/releases/latest/download/cmctl_linux_amd64
+RUN chmod +x cmctl
+RUN sudo mv cmctl /usr/local/bin
 
 USER lucas
 WORKDIR /home/lucas
