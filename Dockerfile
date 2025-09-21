@@ -17,7 +17,7 @@ chmod 754 /home/lucas
 chown -R lucas:lucas /home/lucas/.ssh
 EOF
 
-RUN mkdir /var/run/sshd
+#RUN mkdir /var/run/sshd removed at some point
 
 WORKDIR /tmp/
 RUN wget https://github.com/derailed/k9s/releases/download/v0.50.12/k9s_linux_amd64.deb
